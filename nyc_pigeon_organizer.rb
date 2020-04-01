@@ -1,22 +1,18 @@
 def nyc_pigeon_organizer(data)
   # write your code here!
-  new_hash = {}
-  data.each do |key, value|
-    value.each do |new_value, names|
-      names.each do |name|
-        
-        if !new_hash[name]
-          new_hash[name] = {}
+  pigeon_list = {}
+  data.each do |color_gender_lives, value|
+    value.each do |attributes, all_names|
+      all_names.each do |name|
+        if pigeon_list[name] == nil
+          pigeon_list[name] = {}
         end
-
-        if !new_hash[name][key]
-          new_hash[name][key] = []
+        if pigeon_list[name][color_gender_lives] == nil
+          pigeon_list[name][color_gender_lives] = []
         end
-
-        new_hash[name][key] << new_value.to_s
-
+        pigeon_list[name][color_gender_lives].push(attributes.to_s)
       end
-    end
+    end 
   end
-  new_hash
+  pigeon_list
 end
